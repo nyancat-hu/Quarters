@@ -34,7 +34,7 @@ public class AutoClaimCommand extends BaseCommand {
             QuartersMessaging.sendErrorMessage(player, "您已经拥有一个公寓了，输入/q home 回到公寓，输入/q unclaim退租之前的公寓，退租记得搬走个人物品噢");
             return;
         }
-        if (resident.getTownOrNull()!=null) {
+        if (resident.getTownOrNull()==null) {
             QuartersMessaging.sendErrorMessage(player, "你不能租用公寓，因为你不属于任何一个城镇");
             return;
         }
@@ -48,7 +48,7 @@ public class AutoClaimCommand extends BaseCommand {
         List<Quarter> allClaimableQuartersInPlayerTown = QuarterUtil.getAllClaimableQuartersInPlayerTown(resident.getPlayer());
         Quarter quarter = null;
         for (Quarter q : allClaimableQuartersInPlayerTown) {
-            if(q.getOwner()==null) quarter = q;
+            if(q.getOwner()==null&&q.getPrice()!=null) quarter = q;
         }
         if(quarter == null){
             QuartersMessaging.sendErrorMessage(resident.getPlayer(), "你不能租用公寓，因为当前城镇公寓已住满，或没有公寓区，您可以前往其他城镇或自建城镇");
@@ -96,7 +96,9 @@ public class AutoClaimCommand extends BaseCommand {
         quarter.setClaimedAt(Instant.now().toEpochMilli());
         quarter.setOverdueday(0);
         quarter.setOverdueTax((double) 0);
+        quarter.setLastPrice(quarter.getPrice());
         quarter.setPrice(null);
+
         quarter.save();
     }
 }

@@ -200,9 +200,12 @@ public class QuarterUtil {
     public static Quarter playerHasQuarters(Player player) {
         for (Town town : TownyAPI.getInstance().getTowns()) {
             List<Quarter> currentTownQuarterList = new QuartersTown(town).getQuarters();
-            for (Quarter quarter : currentTownQuarterList) {
-                if(quarter.getOwner().equals(player.getUniqueId())) return quarter;
+            if(currentTownQuarterList!=null){
+                for (Quarter quarter : currentTownQuarterList) {
+                    if(quarter.getOwner()!=null &&quarter.getOwner().equals(player.getUniqueId())) return quarter;
+                }
             }
+
         }
         return null;
     }

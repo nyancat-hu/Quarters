@@ -39,7 +39,6 @@ public class UnclaimCommand extends BaseCommand {
         quarter.setClaimedAt(null);
         quarter.setOverdueday(0);
         quarter.setOverdueTax((double) 0);
-
         quarter.setPrice(quarter.getLastPrice());
         quarter.save();
 

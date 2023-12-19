@@ -68,7 +68,8 @@ public class CreateCommand extends BaseCommand {
         quarter.setTown(town.getUUID());
         quarter.setOwner(null);
         quarter.setTrusted(new ArrayList<>());
-        quarter.setPrice(null);
+        quarter.setPrice(Quarters.DEFAULT_PRICE);
+        quarter.setLastPrice(Quarters.DEFAULT_PRICE);
         quarter.setType(QuarterType.APARTMENT);
         quarter.setEmbassy(false);
         quarter.setRegistered(Instant.now().toEpochMilli());

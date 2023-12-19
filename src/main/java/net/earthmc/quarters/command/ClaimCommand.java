@@ -99,6 +99,7 @@ public class ClaimCommand extends BaseCommand {
         quarter.setClaimedAt(Instant.now().toEpochMilli());
         quarter.setOverdueday(0);
         quarter.setOverdueTax((double) 0);
+        quarter.setLastPrice(quarter.getPrice());
         quarter.setPrice(null);
         quarter.save();
     }
