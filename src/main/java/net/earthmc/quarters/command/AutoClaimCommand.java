@@ -20,6 +20,8 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 
+import static net.earthmc.quarters.object.QuarterType.PLOT;
+
 @CommandAlias("quarters|q")
 public class AutoClaimCommand extends BaseCommand {
     @Subcommand("auto")
@@ -48,7 +50,7 @@ public class AutoClaimCommand extends BaseCommand {
         List<Quarter> allClaimableQuartersInPlayerTown = QuarterUtil.getAllClaimableQuartersInPlayerTown(resident.getPlayer());
         Quarter quarter = null;
         for (Quarter q : allClaimableQuartersInPlayerTown) {
-            if(q.getOwner()==null&&q.getPrice()!=null) quarter = q;
+            if(q.getOwner()==null&&q.getPrice()!=null&&!(q.getType()==PLOT)) quarter = q;
         }
         if(quarter == null){
             QuartersMessaging.sendErrorMessage(resident.getPlayer(), "你不能租用公寓，因为当前城镇公寓已住满，或没有公寓区，您可以前往其他城镇或自建城镇");

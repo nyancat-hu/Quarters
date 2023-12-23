@@ -6,7 +6,8 @@ public enum QuarterType {
     PUBLIC("public"),
     SHOP("shop"),
     STATION("station"),
-    WORKSITE("worksite");
+    WORKSITE("worksite"),
+    PLOT("plot");
 
     private final String name;
 
