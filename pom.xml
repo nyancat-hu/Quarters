@@ -55,6 +55,11 @@
     </build>
 
     <repositories>
+
+        <repository>
+            <id>glaremasters repo</id>
+            <url>https://repo.glaremasters.me/repository/towny/</url>
+        </repository>
         <repository>
             <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
@@ -88,7 +93,7 @@
         <dependency>
             <groupId>dev.folia</groupId>
             <artifactId>folia-api</artifactId>
-            <version>1.20.1-R0.1-SNAPSHOT</version>
+            <version>1.21-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -98,9 +103,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.TownyAdvanced</groupId>
+            <groupId>com.palmergames.bukkit.towny</groupId>
             <artifactId>towny</artifactId>
-            <version>0.99.5.19</version>
+            <version>0.100.3.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
