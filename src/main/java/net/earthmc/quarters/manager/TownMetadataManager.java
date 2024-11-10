@@ -14,11 +14,10 @@ public class TownMetadataManager {
 
     public static List<Quarter> getQuarterListOfTown(Town town) {
         if (town.hasMeta(QLDF)) {
-            CustomDataField<?> cdf = town.getMetadata(QLDF);
-            if (cdf instanceof QuarterListDataField) {
-                QuarterListDataField qldf = (QuarterListDataField) cdf;
+            QuarterListDataField cdf = (QuarterListDataField) town.getMetadata(QLDF);
+            if (cdf != null) {
 
-                List<Quarter> quarterList = qldf.getValue();
+                List<Quarter> quarterList = cdf.getValue();
                 if (quarterList.isEmpty()) {
                     return null;
                 } else {
@@ -35,12 +34,10 @@ public class TownMetadataManager {
             town.addMetaData(new QuarterListDataField("quarters_qldf", null));
 
         if (town.hasMeta(QLDF)) {
-            CustomDataField<?> cdf = town.getMetadata(QLDF);
-            if (cdf instanceof QuarterListDataField) {
-                QuarterListDataField qldf = (QuarterListDataField) cdf;
-
-                qldf.setValue(value);
-                town.addMetaData(qldf);
+            QuarterListDataField cdf = (QuarterListDataField) town.getMetadata(QLDF);
+            if (cdf != null) {
+                cdf.setValue(value);
+                town.addMetaData(cdf);
             }
         }
     }

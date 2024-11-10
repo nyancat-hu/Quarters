@@ -77,7 +77,7 @@ public class OutlineParticleTask extends BukkitRunnable implements Consumer<Sche
                     int[] rgb = quarter.getRGB();
                     Particle.DustOptions dustOptions = new Particle.DustOptions(Color.fromRGB(rgb[0], rgb[1], rgb[2]), 1f);
 
-                    createParticlesAtCuboidEdges(player, cuboid.getPos1(), cuboid.getPos2(), Particle.REDSTONE, dustOptions);
+                    createParticlesAtCuboidEdges(player, cuboid.getPos1(), cuboid.getPos2(), Particle.valueOf(Quarters.INSTANCE.getConfig().getString("particles.current_selection_particle")), dustOptions);
                 }
             }
         }

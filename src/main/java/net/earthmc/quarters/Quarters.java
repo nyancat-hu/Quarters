@@ -23,6 +23,14 @@ public final class Quarters extends JavaPlugin {
     public static Material WAND;
     public static double DEFAULT_PRICE;
 
+
+    @Override
+    public void onLoad() {
+
+
+        MetadataLoader.getInstance().registerDeserializer(QuarterListDataField.typeID(), new QuarterListDFDeserializer());
+    }
+
     @Override
     public void onEnable() {
         INSTANCE = this;
